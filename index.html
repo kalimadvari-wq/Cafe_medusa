@@ -49,134 +49,106 @@
     100% { transform: translateY(-50px) translateX(50px) scale(1); opacity:0;}
   }
 
-  h1 {
-    color: #e5c100;
+  /* مرکز فرم و پیام خوشامدگویی */
+  .center {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
     text-align: center;
-    font-size: 3rem;
-    margin-top: 2rem;
-    animation: fadeIn 2s ease-in-out;
-    text-shadow: 0 0 10px #f5c542;
   }
-
-  p {
-    margin: 1.5rem 2rem;
-    font-size: 1.2rem;
-    opacity: 0;
-    animation: fadeInUp 1.5s forwards;
-    text-shadow: 0 0 5px rgba(229,193,0,0.4);
+  input {
+    padding: 0.5rem;
+    margin: 0.5rem;
+    border-radius: 5px;
+    border: none;
+    font-size: 1rem;
   }
-
-  p:nth-of-type(1){ animation-delay:0.5s;}
-  p:nth-of-type(2){ animation-delay:1s;}
-  p:nth-of-type(3){ animation-delay:1.5s;}
-  p:nth-of-type(4){ animation-delay:2s;}
-  p:nth-of-type(5){ animation-delay:2.5s;}
-  p:nth-of-type(6){ animation-delay:3s;}
-
-  @keyframes fadeInUp {
-    0% {opacity:0; transform:translateY(30px);}
-    100% {opacity:1; transform:translateY(0);}
-  }
-
-  .highlight {
-    color: #e5c100;
-    font-weight: bold;
-    transition: color 0.3s, transform 0.3s, text-shadow 0.3s;
-  }
-  .highlight:hover {
-    color: #f5c542;
-    transform: scale(1.15);
-    text-shadow: 0 0 15px #f5c542;
+  button {
+    padding: 0.5rem 1rem;
+    background: #e5c100;
+    color: #1a1a1a;
+    border: none;
+    border-radius: 5px;
     cursor: pointer;
+    font-weight: bold;
+    margin-top: 0.5rem;
   }
+  button:hover { background: #f5c542; }
+  .hidden { display: none; }
 
-  .emoji { font-size:1.3em;}
-
-  a {
-    color:#f5c542;
-    text-decoration:none;
-    transition:color 0.3s, transform 0.3s, text-shadow 0.3s;
-  }
-  a:hover {
-    color:#e5c100;
-    transform: scale(1.1);
-    text-shadow: 0 0 15px #f5c542;
-  }
-
-  /* بخار قهوه حرفه‌ای Ultra */
-  .steam {
-    position: fixed;
-    bottom: 100px;
-    width: 25px;
-    height: 70px;
-    border-radius:50%;
-    background: radial-gradient(circle, rgba(229,193,0,0.25), transparent);
-    animation: rise linear infinite;
-    pointer-events:none;
-    z-index:-1;
-  }
-  .steam:nth-child(1){ left:50%; animation-delay:0s; animation-duration:4s;}
-  .steam:nth-child(2){ left:55%; animation-delay:1s; animation-duration:5s;}
-  .steam:nth-child(3){ left:45%; animation-delay:2s; animation-duration:6s;}
-  .steam:nth-child(4){ left:52%; animation-delay:0.5s; animation-duration:4.5s;}
-  .steam:nth-child(5){ left:48%; animation-delay:1.5s; animation-duration:5.5s;}
-  .steam:nth-child(6){ left:53%; animation-delay:2.2s; animation-duration:4.2s;}
-  .steam:nth-child(7){ left:47%; animation-delay:0.8s; animation-duration:5.2s;}
-  .steam:nth-child(8){ left:51%; animation-delay:1.8s; animation-duration:4.8s;}
-
-  @keyframes rise {
-    0% {transform: translateX(-50%) translateY(0) scale(1); opacity:0.5;}
-    50% {transform: translateX(calc(-50% + 5px)) translateY(-60px) scale(1.1); opacity:0.3;}
-    100% {transform: translateX(-50%) translateY(-150px) scale(1); opacity:0;}
-  }
+  h1 { color: #e5c100; text-align: center; margin-top: 2rem; text-shadow:0 0 10px #f5c542; }
+  p { margin: 1rem 2rem; line-height: 1.6; font-size: 1.2rem; opacity:0; text-shadow:0 0 5px rgba(229,193,0,0.4); }
+  .highlight { color: #e5c100; font-weight: bold; transition: 0.3s; }
+  .highlight:hover { color: #f5c542; text-shadow:0 0 15px #f5c542; transform:scale(1.15); cursor:pointer; }
+  a { color:#f5c542; text-decoration:none; transition:0.3s; }
+  a:hover { color:#e5c100; transform:scale(1.1); text-shadow:0 0 15px #f5c542; }
+  .emoji { font-size: 1.3em;}
 </style>
 </head>
 <body>
-  <!-- بخار حرفه‌ای -->
-  <div class="steam"></div>
-  <div class="steam"></div>
-  <div class="steam"></div>
-  <div class="steam"></div>
-  <div class="steam"></div>
-  <div class="steam"></div>
-  <div class="steam"></div>
-  <div class="steam"></div>
 
-  <!-- ذرات نور -->
-  <script>
-    for(let i=0;i<30;i++){
-      const particle=document.createElement('div');
-      particle.className='particle';
-      particle.style.left=Math.random()*100+'vw';
-      particle.style.animationDuration=(3+Math.random()*5)+'s';
-      particle.style.width=(3+Math.random()*4)+'px';
-      particle.style.height=(3+Math.random()*4)+'px';
-      document.body.appendChild(particle);
-    }
-  </script>
+<!-- فرم ورود اسم و سن -->
+<div id="formDiv" class="center">
+  <h2>سلام! قبل از ورود لطفاً اطلاعاتت رو بده 😎</h2>
+  <input type="text" id="nameInput" placeholder="اسمت رو وارد کن">
+  <input type="number" id="ageInput" placeholder="چند سالته؟">
+  <button onclick="showGreeting()">ورود</button>
+</div>
 
+<!-- پیام خوشامدگویی -->
+<div id="greetingDiv" class="center hidden">
+  <h2 id="greetingMsg"></h2>
+  <button onclick="showText()">ادامه بده</button>
+</div>
+
+<!-- متن اصلی -->
+<div id="textDiv">
   <h1>کافه مدوسا ☕🐍</h1>
-
-  <p>سلام رفیق <span class="emoji">🤟</span><br>
-  راستش من نه می‌دونم اسمت چیه، نه می‌دونم چند سالته، نه حتی می‌دونم الان کجایی... 
-  ولی خب بذار رک بگم: اگه بدونم هم زیاد فرقی نداره! <span class="emoji">😂</span></p>
-
-  <p>چیزی که برام مهمه اینه که تو این لحظه این متن رو داری می‌خونی، یعنی به یه جور <span class="highlight">جادو</span> گرفتار شدی... <span class="emoji">✨</span></p>
-
-  <p>حالا می‌پرسی چه جادویی؟<br>
+  <p id="p1"></p>
+  <p id="p2">چیزی که برام مهمه اینه که تو این لحظه این متن رو داری می‌خونی، یعنی به یه جور <span class="highlight">جادو</span> گرفتار شدی... <span class="emoji">✨</span></p>
+  <p id="p3">حالا می‌پرسی چه جادویی؟<br>
   جادوی <span class="highlight">قهوه</span>, <span class="highlight">دمنوش</span> و یه عالمه چیز خوشمزه <span class="emoji">😋</span><br>
   آره درست حدس زدی، ما یه کافه داریم، اسمش هم "<span class="highlight">مدوسا</span>"ست ☕🐍</p>
-
-  <p>اینجا دقیقا همونجاییه که وقتی بیای، حال و هوات عوض میشه.<br>
+  <p id="p4">اینجا دقیقا همونجاییه که وقتی بیای، حال و هوات عوض میشه.<br>
   قهوه‌هامون مثل یه <span class="highlight">بوسه‌ی تلخ و شیرین</span>, دمنوش‌هامون مثل یه <span class="highlight">آغوش گرم</span>, کیک‌هامونم که... خب بذار بگم: اگه نخوری، جدی یه چیزی از دست دادی! <span class="emoji">🤤</span></p>
-
-  <p>پس چرا منتظری؟<br>
+  <p id="p5">پس چرا منتظری؟<br>
   قول می‌دم اگه یه بار سر بزنی، هم یه حال خوب می‌بری، هم شاید یه داستان جدید برای تعریف کردن پیدا کنی.</p>
-
-  <p>منتظرتیم... همینجا، کافه مدوسا.<br>
+  <p id="p6">منتظرتیم... همینجا، کافه مدوسا.<br>
   (اگه نیای... خب خودت می‌دونی، مدوسا چشمشو که باز کنه دیگه راه فرار نداری <span class="emoji">😏👀</span>)</p>
-
-  <p>📍 برای دیدن عکس‌ها و اخبار بیشتر:<br>
+  <p id="p7">📍 برای دیدن عکس‌ها و اخبار بیشتر:<br>
   <a href="https://www.instagram.com/cafe__medusa" target="_blank">پیج اینستاگرام کافه مدوسا</a></p>
-</body>
-</html>
+</div>
+
+<!-- بخار حرفه‌ای Ultra -->
+<div class="steam" style="left:50%; animation-delay:0s;"></div>
+<div class="steam" style="left:55%; animation-delay:1s;"></div>
+<div class="steam" style="left:45%; animation-delay:2s;"></div>
+<div class="steam" style="left:52%; animation-delay:0.5s;"></div>
+<div class="steam" style="left:48%; animation-delay:1.5s;"></div>
+<div class="steam" style="left:53%; animation-delay:2.2s;"></div>
+<div class="steam" style="left:47%; animation-delay:0.8s;"></div>
+<div class="steam" style="left:51%; animation-delay:1.8s;"></div>
+
+<script>
+function showGreeting(){
+  const name = document.getElementById('nameInput').value.trim();
+  const age = document.getElementById('ageInput').value.trim();
+  if(name && age){
+    document.getElementById('greetingMsg').textContent = `سلام! من می‌دونم اسمت ${name} هست و ${age} سالته 😎`;
+    document.getElementById('formDiv').classList.add('hidden');
+    document.getElementById('greetingDiv').classList.remove('hidden');
+  } else {
+    alert("لطفاً هم اسم و هم سن خود را وارد کنید!");
+  }
+}
+
+function showText(){
+  const name = document.getElementById('nameInput').value.trim();
+  const age = document.getElementById('ageInput').value.trim();
+  document.getElementById('p1').innerHTML = `سلام ${name} عزیز <span class="emoji">🤟</span><br>راستش من نه می‌دونم چند سالته، ولی تو گفتی ${age} ساله! <span class="emoji">😂</span>`;
+  document.getElementById('greetingDiv').classList.add('hidden');
+  document.getElementById('textDiv').style.display='block';
+
+  // افکت ورود متن
