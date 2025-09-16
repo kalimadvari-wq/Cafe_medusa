@@ -6,220 +6,204 @@
 <title>کافه مدوسا</title>
 <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700&display=swap" rel="stylesheet">
 <style>
-  body {
-    font-family: 'Vazirmatn', Tahoma, sans-serif;
-    margin:0; padding:0;
-    background: #050505;
-    color: #f5f5f5;
-    direction: rtl;
-    overflow-x: hidden;
-    position: relative;
-  }
+body {
+  font-family: 'Vazirmatn', Tahoma, sans-serif;
+  margin:0; padding:0;
+  color: #f5f5f5;
+  direction: rtl;
+  overflow-x: hidden;
+  position: relative;
+  background: #000000; /* پس‌زمینه مشکی */
+}
 
-  body::before {
-    content:"";
-    position: fixed;
-    top:0; left:0; width:100%; height:100%;
-    background: radial-gradient(circle at 50% 50%, rgba(229,193,0,0.03), transparent 80%);
-    animation: bgPulse 20s infinite alternate;
-    z-index: -3;
-    filter: blur(6px);
-  }
-  @keyframes bgPulse {
-    0% {opacity:0.05;}
-    50% {opacity:0.02;}
-    100% {opacity:0.08;}
-  }
+h1 {
+  color: #e5c100;
+  text-align: center;
+  font-size: 3rem;
+  margin: 2rem 1rem 1rem 1rem;
+  text-shadow: 0 0 30px #f5c542, 0 0 80px #aa8800, 0 0 150px #664400;
+}
 
-  .particle {
-    position: fixed;
-    width: 2px; height: 2px;
-    background: rgba(245,197,66,0.2);
-    border-radius: 50%;
-    pointer-events: none;
-    z-index: -2;
-    filter: blur(2px);
-  }
+p {
+  margin: 1rem 2rem;
+  font-size: 1.2rem;
+  opacity: 0;
+  animation: fadeInUp 1.5s forwards;
+  text-shadow: 0 0 25px rgba(229,193,0,0.15);
+  padding: 0.8rem 1rem;
+  border-radius: 14px;
+  background-color: rgba(20,20,20,0.6); /* نیمه شفاف برای خوانایی متن */
+}
 
-  h1 {
-    color: #e5c100;
-    text-align: center;
-    font-size: 3rem;
-    margin: 2rem 1rem 1rem 1rem;
-    text-shadow: 0 0 30px #f5c542, 0 0 80px #aa8800, 0 0 150px #664400;
-  }
+p:nth-of-type(1){ animation-delay:0.5s;}
+p:nth-of-type(2){ animation-delay:1s;}
+p:nth-of-type(3){ animation-delay:1.5s;}
+p:nth-of-type(4){ animation-delay:2s;}
+p:nth-of-type(5){ animation-delay:2.5s;}
+p:nth-of-type(6){ animation-delay:3s;}
+p:nth-of-type(7){ animation-delay:3.5s;}
 
-  p {
-    margin: 1rem 2rem;
-    font-size: 1.2rem;
-    opacity: 0;
-    animation: fadeInUp 1.5s forwards;
-    text-shadow: 0 0 25px rgba(229,193,0,0.15);
-    background: rgba(0,0,0,0.6);
-    padding: 0.8rem 1rem;
-    border-radius: 14px;
-    filter: drop-shadow(0 0 8px rgba(245,197,66,0.2));
-  }
+@keyframes fadeInUp {
+  0% {opacity:0; transform:translateY(50px);}
+  100% {opacity:1; transform:translateY(0);}
+}
 
-  p:nth-of-type(1){ animation-delay:0.5s;}
-  p:nth-of-type(2){ animation-delay:1s;}
-  p:nth-of-type(3){ animation-delay:1.5s;}
-  p:nth-of-type(4){ animation-delay:2s;}
-  p:nth-of-type(5){ animation-delay:2.5s;}
-  p:nth-of-type(6){ animation-delay:3s;}
+.highlight {
+  color: #e5c100;
+  font-weight: bold;
+  transition: all 0.3s ease-in-out;
+}
+.highlight:hover {
+  color: #f5c542;
+  transform: scale(1.25) rotate(-5deg);
+  text-shadow: 0 0 40px #f5c542, 0 0 80px #aa8800;
+  cursor: pointer;
+}
 
-  @keyframes fadeInUp {
-    0% {opacity:0; transform:translateY(50px);}
-    100% {opacity:1; transform:translateY(0);}
-  }
+a {
+  color:#f5c542;
+  text-decoration:none;
+  transition: all 0.3s ease-in-out;
+}
+a:hover {
+  color:#e5c100;
+  transform: scale(1.1);
+  text-shadow: 0 0 35px #f5c542, 0 0 70px #aa8800;
+}
 
-  .highlight {
-    color: #e5c100;
-    font-weight: bold;
-    transition: all 0.3s ease-in-out;
-  }
-  .highlight:hover {
-    color: #f5c542;
-    transform: scale(1.25) rotate(-5deg);
-    text-shadow: 0 0 40px #f5c542, 0 0 80px #aa8800;
-    cursor: pointer;
-  }
+@media (max-width:768px){
+  h1 { font-size:2rem; margin-top:1.5rem; }
+  p { font-size:1rem; margin:0.8rem 1rem; }
+}
 
-  a {
-    color:#f5c542;
-    text-decoration:none;
-    transition: all 0.3s ease-in-out;
-  }
-  a:hover {
-    color:#e5c100;
-    transform: scale(1.1);
-    text-shadow: 0 0 35px #f5c542, 0 0 70px #aa8800;
-  }
+.steam {
+  position: fixed;
+  bottom: 90px;
+  width: 25px; height: 70px;
+  border-radius:50%;
+  background: radial-gradient(circle, rgba(229,193,0,0.1), transparent);
+  pointer-events:none;
+  z-index:-1;
+  filter: blur(3px);
+}
 
-  .steam {
-    position: fixed;
-    bottom: 90px;
-    width: 25px;
-    height: 70px;
-    border-radius:50%;
-    background: radial-gradient(circle, rgba(229,193,0,0.1), transparent);
-    pointer-events:none;
-    z-index:-1;
-    filter: blur(3px);
-  }
+.blood {
+  position: fixed;
+  background: rgba(180,0,0,0.8);
+  border-radius: 50%;
+  z-index: -1;
+  filter: blur(1.5px);
+  animation: bloodDrip 4s infinite;
+}
+@keyframes bloodDrip {
+  0% { transform: translateY(0px) rotate(0deg); opacity:0.9; }
+  50% { transform: translateY(15px) rotate(15deg); opacity:0.6; }
+  100% { transform: translateY(0px) rotate(0deg); opacity:0.9; }
+}
 
-  @media (max-width:768px){
-    h1 { font-size:2rem; margin-top:1.5rem; }
-    p { font-size:1rem; margin:0.8rem 1rem; }
-  }
+.particle {
+  position: fixed;
+  width: 2px; height: 2px;
+  background: rgba(245,197,66,0.2);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: -2;
+  filter: blur(2px);
+}
 </style>
 </head>
 <body>
 
-  <div class="steam" id="steam1"></div>
-  <div class="steam" id="steam2"></div>
-  <div class="steam" id="steam3"></div>
-  <div class="steam" id="steam4"></div>
+<h1> CAFE MEDUSA☕🐍</h1>
 
-  <!-- موسیقی پس‌زمینه -->
-  <audio autoplay loop id="bgMusic">
-    <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_1123.mp3?filename=spooky-ambient-1123.mp3" type="audio/mpeg">
-    مرورگر شما پخش صدا را پشتیبانی نمی‌کند.
-  </audio>
+<p>در دل شب‌های تاریک، جایی میان مه و سایه‌ها، کافه‌ای مخفی وجود دارد که تنها شجاع‌ترین‌ها از آن باخبرند. اینجا مکانی است که جادو و راز، با هر قطره قهوه و هر بخار دمنوش، زندگی می‌کنند.</p>
 
-  <!-- افکت صوتی تصادفی شبح‌وار -->
-  <audio id="ghostSound">
-    <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_ghost.mp3" type="audio/mpeg">
-  </audio>
+<p>سلام رفیق <span class="emoji">🤟</span><br>
+راستش من نه می‌دانم اسمت چیست، نه می‌دانم چند سالته، نه حتی می‌دانم الان کجایی... ولی خب بذار رک بگویم: اگر بدانم هم زیاد فرقی ندارد! <span class="emoji">😂</span></p>
 
-  <script>
-    const music = document.getElementById('bgMusic');
-    music.volume = 0.08;
+<p>چیزی که واقعاً مهم است، این است که در همین لحظه، تو این متن را می‌خوانی، یعنی به نوعی <span class="highlight">جادوی مدوسا</span> گرفتار شدی... <span class="emoji">✨</span></p>
 
-    // ذرات نور
-    for(let i=0;i<50;i++){
-      const particle=document.createElement('div');
-      particle.className='particle';
-      particle.style.left=Math.random()*100+'vw';
-      particle.style.top=Math.random()*100+'vh';
-      particle.style.width=(2+Math.random()*5)+'px';
-      particle.style.height=(2+Math.random()*5)+'px';
-      particle.dataset.vx=(Math.random()*0.5-0.25);
-      particle.dataset.vy=(Math.random()*0.5-0.25);
-      particle.dataset.opacity=(0.1 + Math.random()*0.2);
-      document.body.appendChild(particle);
-    }
+<p>جادوی <span class="highlight">قهوه‌های تلخ و خوش‌عطر</span>، <span class="highlight">دمنوش‌های گرم</span> و یک عالمه چیز خوشمزه دیگر <span class="emoji">😋</span>. آره درست حدس زدی، ما یک کافه داریم، اسمش هم "<span class="highlight">مدوسا</span>" است ☕🐍</p>
 
-    function animateParticles(){
-      document.querySelectorAll('.particle').forEach(p=>{
-        let x = (parseFloat(p.style.left) + parseFloat(p.dataset.vx))%100;
-        let y = (parseFloat(p.style.top) + parseFloat(p.dataset.vy))%100;
-        p.style.left = x + 'vw';
-        p.style.top = y + 'vh';
-        // تغییر تصادفی روشنایی
-        p.style.opacity = 0.05 + Math.random()*0.2;
-      });
-      requestAnimationFrame(animateParticles);
-    }
-    animateParticles();
+<p>اینجا همانجایی است که وقتی وارد می‌شوی، حال و هوایت عوض می‌شود.  
+قهوه‌هایمان مثل یک <span class="highlight">بوسه تلخ و شیرین</span>، دمنوش‌هایمان مثل یک <span class="highlight">آغوش گرم</span> و کیک‌هایمان که... اگه نخوری، واقعاً چیزی از دست داده‌ای! <span class="emoji">🤤</span></p>
 
-    // بخار موجی
-    function animateSteam(id, leftBase, duration){
-      const steam = document.getElementById(id);
-      let start = null;
-      function step(timestamp){
-        if(!start) start = timestamp;
-        const progress = (timestamp-start)/1000;
-        const y = -180*(progress/duration);
-        const x = 5*Math.sin(progress*2);
-        const scale = 0.7 + 0.3*Math.sin(progress);
-        const opacity = 0.1 + 0.15*Math.sin(progress*2);
-        steam.style.transform = `translateX(${leftBase + x}vw) translateY(${y}px) scale(${scale})`;
-        steam.style.opacity = opacity;
-        requestAnimationFrame(step);
-      }
-      requestAnimationFrame(step);
-    }
+<p>پس چرا منتظری؟<br>
+قول می‌دهم اگر یک بار سر بزنی، هم یک حال خوب با خودت می‌بری و هم شاید یک داستان جدید برای تعریف کردن پیدا کنی.</p>
 
-    animateSteam('steam1', 50, 6);
-    animateSteam('steam2', 55, 7);
-    animateSteam('steam3', 45, 8);
-    animateSteam('steam4', 52, 6.5);
+<p>منتظرتیم... همینجا، کافه مدوسا.<br>
+(اگر نیایی... خب خودت می‌دانی، مدوسا چشمش را که باز کند دیگر راه فراری نداری <span class="emoji">😏👀</span>)</p>
 
-    // پخش افکت شبح‌وار به صورت تصادفی
-    const ghost = document.getElementById('ghostSound');
-    function playGhost(){
-      if(Math.random() < 0.02){ // احتمال تصادفی
-        ghost.volume = 0.1 + Math.random()*0.1;
-        ghost.play();
-      }
-      setTimeout(playGhost, 2000 + Math.random()*3000);
-    }
-    playGhost();
-  </script>
+<p>📍 برای دیدن عکس‌ها و اخبار بیشتر:<br>
+<a href="https://www.instagram.com/cafe__medusa" target="_blank">پیج اینستاگرام کافه مدوسا</a></p>
 
-  <h1> CAFE MEDUSA ☕🐍</h1>
+<!-- بخار و لکه خون -->
+<div class="steam" style="left:50%;"></div>
+<div class="steam" style="left:55%;"></div>
+<div class="steam" style="left:45%;"></div>
+<div class="steam" style="left:52%;"></div>
 
-  <p>سلام رفیق <span class="emoji">🤟</span><br>
-  راستش من نه می‌دونم اسمت چیه، نه چند سالته، نه حتی الان کجایی... 
-  ولی خب بذار رک بگم: اگه بدونم هم زیاد فرقی نداره! <span class="emoji">😂</span></p>
+<!-- موسیقی پس‌زمینه -->
+<audio autoplay loop id="bgMusic">
+  <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_1123.mp3?filename=spooky-ambient-1123.mp3" type="audio/mpeg">
+</audio>
 
-  <p>چیزی که برام مهمه اینه که تو این لحظه این متن رو داری می‌خونی، یعنی به یه جور <span class="highlight">جادو</span> گرفتار شدی... <span class="emoji">✨</span></p>
+<!-- افکت صوتی شبح‌وار -->
+<audio id="ghostSound">
+  <source src="https://cdn.pixabay.com/download/audio/2021/08/04/audio_8f7e19d9e3.mp3?filename=haunted-cave-11283.mp3" type="audio/mpeg">
+</audio>
 
-  <p>جادوی <span class="highlight">قهوه</span>, <span class="highlight">دمنوش</span> و یه عالمه چیز خوشمزه <span class="emoji">😋</span><br>
-  آره درست حدس زدی، ما یه کافه داریم، اسمش هم "<span class="highlight">مدوسا</span>"ست ☕🐍</p>
+<script>
+const music = document.getElementById('bgMusic');
+music.volume = 0.08;
 
-  <p>اینجا همونجاییه که وقتی بیای، حال و هوات عوض میشه.<br>
-  قهوه‌هامون مثل یه <span class="highlight">بوسه‌ی تلخ و شیرین</span>, دمنوش‌هامون مثل یه <span class="highlight">آغوش گرم</span>, کیک‌هامونم که... اگه نخوری، جدی یه چیزی از دست دادی! <span class="emoji">🤤</span></p>
+// ذرات نور
+for(let i=0;i<50;i++){
+  const particle=document.createElement('div');
+  particle.className='particle';
+  particle.style.left=Math.random()*100+'vw';
+  particle.style.top=Math.random()*100+'vh';
+  particle.style.width=(2+Math.random()*5)+'px';
+  particle.style.height=(2+Math.random()*5)+'px';
+  particle.dataset.vx=(Math.random()*0.5-0.25);
+  particle.dataset.vy=(Math.random()*0.5-0.25);
+  document.body.appendChild(particle);
+}
+function animateParticles(){
+  document.querySelectorAll('.particle').forEach(p=>{
+    let x=(parseFloat(p.style.left)+parseFloat(p.dataset.vx))%100;
+    let y=(parseFloat(p.style.top)+parseFloat(p.dataset.vy))%100;
+    p.style.left=x+'vw';
+    p.style.top=y+'vh';
+    p.style.opacity=0.05+Math.random()*0.2;
+  });
+  requestAnimationFrame(animateParticles);
+}
+animateParticles();
 
-  <p>پس چرا منتظری؟<br>
-  قول می‌دم اگه یه بار سر بزنی، هم یه حال خوب می‌بری، هم شاید یه داستان جدید پیدا کنی.</p>
+// لکه خون
+for(let i=0;i<20;i++){
+  const blood=document.createElement('div');
+  blood.className='blood';
+  blood.style.left=Math.random()*100+'vw';
+  blood.style.top=Math.random()*100+'vh';
+  blood.style.width=(10+Math.random()*20)+'px';
+  blood.style.height=(10+Math.random()*20)+'px';
+  blood.style.animationDuration=(3+Math.random()*3)+'s';
+  document.body.appendChild(blood);
+}
 
-  <p>منتظرتیم... همینجا، کافه مدوسا.<br>
-  (اگه نیای... خب خودت می‌دونی، مدوسا چشمشو که باز کنه دیگه راه فرار نداری <span class="emoji">😏👀</span>)</p>
-
-  <p>📍 برای دیدن عکس‌ها و اخبار بیشتر:<br>
-  <a href="https://www.instagram.com/cafe__medusa" target="_blank">پیج اینستاگرام کافه مدوسا</a></p>
-
+// افکت شبح‌وار تصادفی
+const ghost=document.getElementById('ghostSound');
+function playGhost(){
+  if(Math.random()<0.03){
+    ghost.volume=0.05+Math.random()*0.05;
+    ghost.currentTime=0;
+    ghost.play();
+  }
+  setTimeout(playGhost,2000+Math.random()*3000);
+}
+playGhost();
+</script>
 </body>
 </html>
