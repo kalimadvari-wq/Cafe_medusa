@@ -1,41 +1,160 @@
 <!DOCTYPE html>
 <html lang="fa">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>کافه مدوسا</title>
-  <style>
-    body {
-      font-family: "Tahoma", sans-serif;
-      background-color: #1a1a1a;
-      color: #f5f5f5;
-      line-height: 1.8;
-      padding: 2rem;
-    }
-    h1 {
-      color: #e5c100;
-      text-align: center;
-    }
-    p {
-      margin: 1rem 0;
-    }
-    .highlight {
-      color: #e5c100;
-      font-weight: bold;
-    }
-    .emoji {
-      font-size: 1.2em;
-    }
-    a {
-      color: #f5c542;
-      text-decoration: none;
-    }
-    a:hover {
-      text-decoration: underline;
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>کافه مدوسا</title>
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  body {
+    font-family: 'Vazirmatn', Tahoma, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(135deg, #1a1a1a, #111, #1a1a1a);
+    color: #f5f5f5;
+    overflow-x: hidden;
+    position: relative;
+  }
+
+  /* پس‌زمینه gradient متحرک */
+  body::before {
+    content:"";
+    position: fixed;
+    top:0; left:0;
+    width:100%; height:100%;
+    background: radial-gradient(circle at 50% 50%, rgba(229,193,0,0.15), transparent 70%);
+    animation: bgPulse 12s infinite alternate;
+    z-index: -3;
+  }
+  @keyframes bgPulse {
+    0% {transform: scale(1); opacity:0.5;}
+    50% {transform: scale(1.1); opacity:0.3;}
+    100% {transform: scale(1.2); opacity:0.2;}
+  }
+
+  /* ذرات نور */
+  .particle {
+    position: fixed;
+    width: 6px;
+    height: 6px;
+    background: rgba(245, 197, 66, 0.8);
+    border-radius: 50%;
+    animation: floatParticle linear infinite;
+    pointer-events: none;
+    z-index: -2;
+  }
+  @keyframes floatParticle {
+    0% { transform: translateY(100vh) translateX(0) scale(0.5); opacity:0.5;}
+    50% { opacity:1; }
+    100% { transform: translateY(-50px) translateX(50px) scale(1); opacity:0;}
+  }
+
+  h1 {
+    color: #e5c100;
+    text-align: center;
+    font-size: 3rem;
+    margin-top: 2rem;
+    animation: fadeIn 2s ease-in-out;
+    text-shadow: 0 0 10px #f5c542;
+  }
+
+  p {
+    margin: 1.5rem 2rem;
+    font-size: 1.2rem;
+    opacity: 0;
+    animation: fadeInUp 1.5s forwards;
+    text-shadow: 0 0 5px rgba(229,193,0,0.4);
+  }
+
+  p:nth-of-type(1){ animation-delay:0.5s;}
+  p:nth-of-type(2){ animation-delay:1s;}
+  p:nth-of-type(3){ animation-delay:1.5s;}
+  p:nth-of-type(4){ animation-delay:2s;}
+  p:nth-of-type(5){ animation-delay:2.5s;}
+  p:nth-of-type(6){ animation-delay:3s;}
+
+  @keyframes fadeInUp {
+    0% {opacity:0; transform:translateY(30px);}
+    100% {opacity:1; transform:translateY(0);}
+  }
+
+  .highlight {
+    color: #e5c100;
+    font-weight: bold;
+    transition: color 0.3s, transform 0.3s, text-shadow 0.3s;
+  }
+  .highlight:hover {
+    color: #f5c542;
+    transform: scale(1.15);
+    text-shadow: 0 0 15px #f5c542;
+    cursor: pointer;
+  }
+
+  .emoji { font-size:1.3em;}
+
+  a {
+    color:#f5c542;
+    text-decoration:none;
+    transition:color 0.3s, transform 0.3s, text-shadow 0.3s;
+  }
+  a:hover {
+    color:#e5c100;
+    transform: scale(1.1);
+    text-shadow: 0 0 15px #f5c542;
+  }
+
+  /* بخار قهوه حرفه‌ای Ultra */
+  .steam {
+    position: fixed;
+    bottom: 100px;
+    width: 25px;
+    height: 70px;
+    border-radius:50%;
+    background: radial-gradient(circle, rgba(229,193,0,0.25), transparent);
+    animation: rise linear infinite;
+    pointer-events:none;
+    z-index:-1;
+  }
+  .steam:nth-child(1){ left:50%; animation-delay:0s; animation-duration:4s;}
+  .steam:nth-child(2){ left:55%; animation-delay:1s; animation-duration:5s;}
+  .steam:nth-child(3){ left:45%; animation-delay:2s; animation-duration:6s;}
+  .steam:nth-child(4){ left:52%; animation-delay:0.5s; animation-duration:4.5s;}
+  .steam:nth-child(5){ left:48%; animation-delay:1.5s; animation-duration:5.5s;}
+  .steam:nth-child(6){ left:53%; animation-delay:2.2s; animation-duration:4.2s;}
+  .steam:nth-child(7){ left:47%; animation-delay:0.8s; animation-duration:5.2s;}
+  .steam:nth-child(8){ left:51%; animation-delay:1.8s; animation-duration:4.8s;}
+
+  @keyframes rise {
+    0% {transform: translateX(-50%) translateY(0) scale(1); opacity:0.5;}
+    50% {transform: translateX(calc(-50% + 5px)) translateY(-60px) scale(1.1); opacity:0.3;}
+    100% {transform: translateX(-50%) translateY(-150px) scale(1); opacity:0;}
+  }
+</style>
 </head>
 <body>
+  <!-- بخار حرفه‌ای -->
+  <div class="steam"></div>
+  <div class="steam"></div>
+  <div class="steam"></div>
+  <div class="steam"></div>
+  <div class="steam"></div>
+  <div class="steam"></div>
+  <div class="steam"></div>
+  <div class="steam"></div>
+
+  <!-- ذرات نور -->
+  <script>
+    for(let i=0;i<30;i++){
+      const particle=document.createElement('div');
+      particle.className='particle';
+      particle.style.left=Math.random()*100+'vw';
+      particle.style.animationDuration=(3+Math.random()*5)+'s';
+      particle.style.width=(3+Math.random()*4)+'px';
+      particle.style.height=(3+Math.random()*4)+'px';
+      document.body.appendChild(particle);
+    }
+  </script>
+
   <h1>کافه مدوسا ☕🐍</h1>
 
   <p>سلام رفیق <span class="emoji">🤟</span><br>
@@ -45,11 +164,11 @@
   <p>چیزی که برام مهمه اینه که تو این لحظه این متن رو داری می‌خونی، یعنی به یه جور <span class="highlight">جادو</span> گرفتار شدی... <span class="emoji">✨</span></p>
 
   <p>حالا می‌پرسی چه جادویی؟<br>
-  جادوی <span class="highlight">قهوه</span>، <span class="highlight">دمنوش</span> و یه عالمه چیز خوشمزه <span class="emoji">😋</span><br>
+  جادوی <span class="highlight">قهوه</span>, <span class="highlight">دمنوش</span> و یه عالمه چیز خوشمزه <span class="emoji">😋</span><br>
   آره درست حدس زدی، ما یه کافه داریم، اسمش هم "<span class="highlight">مدوسا</span>"ست ☕🐍</p>
 
   <p>اینجا دقیقا همونجاییه که وقتی بیای، حال و هوات عوض میشه.<br>
-  قهوه‌هامون مثل یه <span class="highlight">بوسه‌ی تلخ و شیرین</span>، دمنوش‌هامون مثل یه <span class="highlight">آغوش گرم</span>، کیک‌هامونم که... خب بذار بگم: اگه نخوری، جدی یه چیزی از دست دادی! <span class="emoji">🤤</span></p>
+  قهوه‌هامون مثل یه <span class="highlight">بوسه‌ی تلخ و شیرین</span>, دمنوش‌هامون مثل یه <span class="highlight">آغوش گرم</span>, کیک‌هامونم که... خب بذار بگم: اگه نخوری، جدی یه چیزی از دست دادی! <span class="emoji">🤤</span></p>
 
   <p>پس چرا منتظری؟<br>
   قول می‌دم اگه یه بار سر بزنی، هم یه حال خوب می‌بری، هم شاید یه داستان جدید برای تعریف کردن پیدا کنی.</p>
